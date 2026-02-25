@@ -297,9 +297,10 @@ export default function CalculatorPage() {
               </ul>
 
               <div className="mt-4 space-y-3">
-               <label> <h1 className="text-xl font-semibold text-[#c2d0ef]">
-          📌 দয়া করে নিচের তথ্যগুলো সঠিকভাবে টিক চিহ্ন দিয়ে নিশ্চিত করুন।
-    যদি সব শর্ত পূরণ হয়, তাহলে আপনার উপর যাকাত ফরজ হওয়ার সম্ভাবনা রয়েছে।</h1></label>
+              <div className="bg-yellow-500/10 border-l-4 border-yellow-400 p-4 rounded-lg text-sm text-yellow-200">
+  📌 যাকাত হিসাব করার আগে নিচের শর্তগুলো মনোযোগ দিয়ে পড়ুন এবং প্রযোজ্য হলে টিক চিহ্ন দিন।
+  সব শর্ত পূরণ হলে আপনি যাকাত প্রদানের জন্য যোগ্য হতে পারেন।
+</div>
                 <label className="flex items-start gap-3 rounded-xl border border-[#28437a] bg-[#0a1226] px-4 py-3 text-sm">
                   <input type="checkbox" className="mt-1" {...register("isMuslimAdultSoundMind")} />
                   <span>আমি মুসলিম, বালেগ এবং সুস্থ মস্তিষ্কের।</span>
