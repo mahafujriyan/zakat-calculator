@@ -5,6 +5,7 @@ export type ZakatInput = {
   goldVori: number;
   goldGrams: number;
   goldCarat: Carat;
+  silverVori: number;
   silverGrams: number;
   cashInHand: number;
   bankBalance: number;
@@ -21,6 +22,7 @@ export type MarketPrices = {
 export type ZakatResult = {
   totalGoldGrams: number;
   pureGoldGrams: number;
+  totalSilverGrams: number;
   goldValue: number;
   silverValue: number;
   cashValue: number;
@@ -48,6 +50,7 @@ export function calculateZakat(input: ZakatInput, prices: MarketPrices): ZakatRe
   const goldVori = sanitize(input.goldVori);
   const goldGrams = sanitize(input.goldGrams);
   const silverGrams = sanitize(input.silverGrams);
+  const silverVori = sanitize(input.silverVori);
   const cashInHand = sanitize(input.cashInHand);
   const bankBalance = sanitize(input.bankBalance);
   const loans = sanitize(input.loans);
@@ -59,7 +62,8 @@ export function calculateZakat(input: ZakatInput, prices: MarketPrices): ZakatRe
   const totalGoldGrams = goldVori * VORI_TO_GRAM + goldGrams;
   const pureGoldGrams = totalGoldGrams * (carat / 24);
   const goldValue = pureGoldGrams * goldPrice;
-  const silverValue = silverGrams * silverPrice;
+  const totalSilverGrams = silverVori * VORI_TO_GRAM + silverGrams;
+  const silverValue = totalSilverGrams * silverPrice;
   const cashValue = cashInHand + bankBalance;
   const liabilities = loans + immediateDebts;
   const netAssets = goldValue + silverValue + cashValue - liabilities;
@@ -73,6 +77,7 @@ export function calculateZakat(input: ZakatInput, prices: MarketPrices): ZakatRe
   return {
     totalGoldGrams: round2(totalGoldGrams),
     pureGoldGrams: round2(pureGoldGrams),
+    totalSilverGrams: round2(totalSilverGrams),
     goldValue: round2(goldValue),
     silverValue: round2(silverValue),
     cashValue: round2(cashValue),

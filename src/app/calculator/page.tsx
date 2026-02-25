@@ -45,6 +45,7 @@ export default function CalculatorPage() {
       goldVori: 0,
       goldGrams: 0,
       goldCarat: 22,
+      silverVori: 0,
       silverGrams: 0,
       cashInHand: 0,
       bankBalance: 0,
@@ -81,6 +82,7 @@ export default function CalculatorPage() {
     goldVori: Number(values.goldVori) || 0,
     goldGrams: Number(values.goldGrams) || 0,
     goldCarat: (Number(values.goldCarat) || 22) as Carat,
+    silverVori: Number(values.silverVori) || 0,
     silverGrams: Number(values.silverGrams) || 0,
     cashInHand: Number(values.cashInHand) || 0,
     bankBalance: Number(values.bankBalance) || 0,
@@ -148,7 +150,12 @@ export default function CalculatorPage() {
               pureGoldGrams={result.pureGoldGrams}
             />
 
-            <SilverInput register={register} errors={errors as any} silverPricePerGramBDT={prices.silverPricePerGramBDT} />
+            <SilverInput
+              register={register}
+              errors={errors as any}
+              silverPricePerGramBDT={prices.silverPricePerGramBDT}
+              totalSilverGrams={result.totalSilverGrams}
+            />
 
             <section className="glass rounded-2xl p-5 md:p-6">
               <h3 className="mb-4 text-xl font-semibold text-[#f7fbff]">নগদ অর্থ</h3>
