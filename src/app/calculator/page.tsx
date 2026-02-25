@@ -297,6 +297,9 @@ export default function CalculatorPage() {
               </ul>
 
               <div className="mt-4 space-y-3">
+               <label> <h1 className="text-xl font-semibold text-[#c2d0ef]">
+          📌 দয়া করে নিচের তথ্যগুলো সঠিকভাবে টিক চিহ্ন দিয়ে নিশ্চিত করুন।
+    যদি সব শর্ত পূরণ হয়, তাহলে আপনার উপর যাকাত ফরজ হওয়ার সম্ভাবনা রয়েছে।</h1></label>
                 <label className="flex items-start gap-3 rounded-xl border border-[#28437a] bg-[#0a1226] px-4 py-3 text-sm">
                   <input type="checkbox" className="mt-1" {...register("isMuslimAdultSoundMind")} />
                   <span>আমি মুসলিম, বালেগ এবং সুস্থ মস্তিষ্কের।</span>
