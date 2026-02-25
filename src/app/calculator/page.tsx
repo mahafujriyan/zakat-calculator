@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Footer from "@/components/Footer";
 import GoldInput from "@/components/GoldInput";
+import HowToUseModal from "@/components/HowToUseModal";
 import ResultCard from "@/components/ResultCard";
 import SilverInput from "@/components/SilverInput";
 import {
@@ -34,6 +35,7 @@ export default function CalculatorPage() {
   const [prices, setPrices] = useState<MarketPrices>(fallbackPrices);
   const [priceMeta, setPriceMeta] = useState<{ source: string; updatedAt: string } | null>(null);
   const [priceError, setPriceError] = useState<string>("");
+  const [isHowToOpen, setIsHowToOpen] = useState<boolean>(false);
 
   const {
     register,
@@ -77,6 +79,24 @@ export default function CalculatorPage() {
     loadPrices();
   }, []);
 
+  useEffect(() => {
+    if (!isHowToOpen) return;
+
+    const originalOverflow = document.body.style.overflow;
+    const originalPaddingRight = document.body.style.paddingRight;
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+
+    document.body.style.overflow = "hidden";
+    if (scrollbarWidth > 0) {
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
+    }
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      document.body.style.paddingRight = originalPaddingRight;
+    };
+  }, [isHowToOpen]);
+
   const values = watch();
   const parsedValues: ZakatInput = {
     goldVori: Number(values.goldVori) || 0,
@@ -109,9 +129,18 @@ export default function CalculatorPage() {
           transition={{ duration: 0.45 }}
           className="mb-6 rounded-3xl border border-[#3a528f] bg-[rgba(7,14,29,0.74)] p-6 md:p-10"
         >
-          <p className="f-number mb-2 text-xs uppercase tracking-[0.2em] text-[#d4af37] md:text-sm">
-            Bangladesh Zakat Platform
-          </p>
+          <div className="mb-2 flex flex-wrap items-center justify-between gap-3">
+            <p className="f-number text-xs uppercase tracking-[0.2em] text-[#d4af37] md:text-sm">
+              Bangladesh Zakat Platform
+            </p>
+            <button
+              type="button"
+              onClick={() => setIsHowToOpen(true)}
+              className="rounded-full border border-[#3f5a95] bg-[#0a1226] px-4 py-2 text-xs font-semibold text-[#d8e4ff] transition hover:border-[#d4af37] hover:text-white md:text-sm"
+            >
+              কিভাবে ব্যবহার করবেন?
+            </button>
+          </div>
           <h1 className="mb-3 text-3xl font-bold md:text-5xl">যাকাত ক্যালকুলেটর (Bangladesh)</h1>
           <p className="max-w-3xl text-sm text-[#c3d1ef] md:text-base">
             প্রামাণ্য ইসলামিক রুলস অনুযায়ী স্বর্ণ, রূপা, নগদ অর্থ ও দায় বাদ দিয়ে আপনার
@@ -308,6 +337,8 @@ export default function CalculatorPage() {
 
         <Footer />
       </div>
+
+      <HowToUseModal isOpen={isHowToOpen} onClose={() => setIsHowToOpen(false)} />
     </main>
   );
 }
