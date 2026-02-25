@@ -17,6 +17,11 @@ const accentFont = Space_Grotesk({
 export const metadata: Metadata = {
   title: "যাকাত ক্যালকুলেটর (Bangladesh)",
   description: "বাংলাদেশের জন্য লাইভ প্রাইসসহ আধুনিক যাকাত ক্যালকুলেটর",
+  icons: {
+    icon: "/zakat.png",
+    shortcut: "/zakat.png",
+    apple: "/zakat.png",
+  },
 };
 
 export default function RootLayout({
