@@ -1,0 +1,67 @@
+﻿@import "tailwindcss";
+
+:root {
+  --bg-start: #05070f;
+  --bg-end: #101c37;
+  --glass-bg: rgba(13, 22, 42, 0.62);
+  --glass-border: rgba(212, 175, 55, 0.28);
+  --gold: #d4af37;
+  --text-main: #f5f8ff;
+  --text-soft: #b9c6ea;
+  --danger: #ff6b6b;
+  --success: #4ae1a8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text-main);
+  background:
+    radial-gradient(circle at 12% 18%, rgba(40, 87, 175, 0.28), transparent 42%),
+    radial-gradient(circle at 84% 82%, rgba(212, 175, 55, 0.17), transparent 42%),
+    linear-gradient(135deg, var(--bg-start), var(--bg-end));
+  font-family: var(--font-bangla), "Noto Sans Bengali", sans-serif;
+}
+
+.neon-grid {
+  position: relative;
+}
+
+.neon-grid::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(123, 157, 219, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(123, 157, 219, 0.1) 1px, transparent 1px);
+  background-size: 38px 38px;
+  mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
+}
+
+.glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.22);
+}
+
+.f-number {
+  font-family: var(--font-accent), "Trebuchet MS", sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+
+input,
+select {
+  outline: none;
+}
+
+input:focus,
+select:focus {
+  border-color: rgba(212, 175, 55, 0.7);
+  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+}
