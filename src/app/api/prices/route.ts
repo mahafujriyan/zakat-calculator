@@ -12,7 +12,7 @@ let cache: { at: number; data: PricePayload } | null = null;
 
 const FALLBACK: PricePayload = {
   goldPricePerGramBDT: 20000,
-  silverPricePerGramBDT: 250,
+  silverPricePerGramBDT: 335,
   source: "fallback",
   updatedAt: new Date().toISOString(),
 };

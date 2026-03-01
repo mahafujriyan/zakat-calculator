@@ -28,7 +28,7 @@ type PriceApiResponse = MarketPrices & {
 
 const fallbackPrices: MarketPrices = {
   goldPricePerGramBDT: 20000,
-  silverPricePerGramBDT: 250,
+  silverPricePerGramBDT: 335,
 };
 
 export default function CalculatorPage() {
@@ -259,14 +259,14 @@ export default function CalculatorPage() {
             <section className="glass rounded-2xl p-5 md:p-6">
               <h3 className="mb-4 text-xl font-semibold text-[#f7fbff]">নিসাব স্ট্যান্ডার্ড</h3>
               <div className="grid gap-3 md:grid-cols-2">
-                <label className="flex items-center gap-3 rounded-xl border border-[#28437a] bg-[#0a1226] px-4 py-3 text-sm">
+                {/* <label className="flex items-center gap-3 rounded-xl border border-[#28437a] bg-[#0a1226] px-4 py-3 text-sm">
                   <input type="radio" value="gold" {...register("nisabStandard")} />
                   <span>Gold ভিত্তিক (87.48g)</span>
-                </label>
-                {/* <label className="flex items-center gap-3 rounded-xl border border-[#28437a] bg-[#0a1226] px-4 py-3 text-sm">
+                </label> */}
+                <label className="flex items-center gap-3 rounded-xl border border-[#28437a] bg-[#0a1226] px-4 py-3 text-sm">
                   <input type="radio" value="silver" {...register("nisabStandard")} />
                   <span>Silver ভিত্তিক (612.36g)</span>
-                </label> */}
+                </label>
               </div>
             </section>
           </motion.div>
